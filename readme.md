@@ -1,4 +1,4 @@
-# TYPEGRAPHQL BOILERPLATE
+# Web-api
 
 This is a boilerplate project to quickly create a graphql API with all the gooddies that come along with typescript.
 
