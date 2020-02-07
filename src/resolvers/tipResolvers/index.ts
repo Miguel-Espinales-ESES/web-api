@@ -1,4 +1,4 @@
-import { Resolver, Mutation, Args } from "type-graphql";
+import { Resolver, Mutation, Query, Args } from "type-graphql";
 import { Tip, tipModel } from "../../models/tip";
 import createTipInterface from "./interfaces/createTipInterface"
 import { createFilters } from "../../utils/reusableSnippets";
@@ -26,6 +26,21 @@ const CRUDTip = createCRUDResolver({
 
 @Resolver(() => Tip)
 export default class TipResolvers extends CRUDTip {
+
+  @Query(() => Tip)
+  async randomTip (): Promise<Tip> {
+    // get the current document count
+    const tipCount = await tipModel.estimatedDocumentCount()
+
+    // make a random skip
+    const random = Math.floor(Math.random() * (tipCount))
+
+    // get the random model
+    const randomTip = await tipModel.findOne().skip(random)
+
+    return randomTip!
+  }
+
   @Mutation(() => Tip)
   createTip (
     @Args() { title, description, department }: createTipInterface
