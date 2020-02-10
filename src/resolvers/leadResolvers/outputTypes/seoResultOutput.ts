@@ -2,18 +2,18 @@ import { ObjectType, Field } from "type-graphql";
 
 @ObjectType()
 export default class SEOResult {
-  @Field()
+  @Field({ nullable: true })
   title: string
-  @Field()
+  @Field({ nullable: true })
   description: string
   @Field({ nullable: true })
   author: string
   @Field({ nullable: true })
   keywords: string
-  @Field()
+  @Field({ nullable: true })
   heading1: string
-  @Field()
+  @Field({ nullable: true })
   totalHeadings: number
-  @Field()
+  @Field({ nullable: true })
   imgAccessibility: number
 }
