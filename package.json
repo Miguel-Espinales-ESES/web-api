@@ -33,7 +33,6 @@
   "homepage": "https://github.com/victorstein/gql-forge#readme",
   "dependencies": {
     "@typegoose/typegoose": "^6.1.8",
-    "advanced-seo-checker": "^3.0.3",
     "apollo-server-express": "^2.9.14",
     "bcryptjs": "^2.4.3",
     "chalk": "^3.0.0",
@@ -50,6 +49,7 @@
     "nodemailer": "^6.4.2",
     "reflect-metadata": "^0.1.13",
     "request-context": "^2.0.0",
+    "seo-checker": "^0.3.2",
     "type-graphql": "^0.17.6"
   },
   "devDependencies": {
