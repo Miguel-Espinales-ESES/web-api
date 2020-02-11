@@ -11,6 +11,7 @@ type result = {
   score: number
   passed: test[]
   failed: test[]
+  observations: test[]
 }
 
 export default class CheckSEO {
@@ -53,10 +54,16 @@ export default class CheckSEO {
               score: u[1].score * 100 || 'N/A',
               description: u[1].description
             })),
-          failed: Object.entries(audits).filter((u: any) => !u[1].score || u[1].score * 100 < 80)
+          failed: Object.entries(audits).filter((u: any) => u[1].score * 100 < 80 && u[1].score !== null)
             .map((u: any) => ({
               title: u[1].title,
               score: u[1].score * 100,
+              description: u[1].description
+            })),
+          observations: Object.entries(audits).filter((u: any) => u[1].score === null)
+            .map((u: any) => ({
+              title: u[1].title,
+              score: 'N/A',
               description: u[1].description
             }))
         }
