@@ -13,6 +13,6 @@ export default class createLeadInterface {
 
   @Field({ nullable: false })
   @IsEmail(undefined, { message: 'The email provided is not valid' })
-  @isNewLead({ message: 'We have already assesed your website, call us today for a free another free assesment.' })
+  @isNewLead({ message: 'You have already scanned a website using your email! contact us today to get an in-depth assessment!' })
   email: string
 }
