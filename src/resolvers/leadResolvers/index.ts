@@ -60,6 +60,12 @@ export default class LeadResolvers extends CRUDLead {
   async checkSEO (
     @Args() { url, phoneNumber, email, name }: CheckSEOInterface
   ): Promise<SEOResult> {
+    // Create seo bot
+    const bot = new seoChecker({ url })
+
+    // check seo
+    const results: any = await bot.checkSEO()
+
     // Create the lead
     const lead = await leadModel.create({
       email,
@@ -77,12 +83,6 @@ export default class LeadResolvers extends CRUDLead {
 
     // Send the email
     await emailTransporter.sendEmail()
-    
-    // Create seo bot
-    const bot = new seoChecker({ url })
-
-    // check seo
-    const results: any = await bot.checkSEO()
 
     return results
   }
