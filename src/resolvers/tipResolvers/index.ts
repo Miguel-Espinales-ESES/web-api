@@ -36,4 +36,18 @@ export default class TipResolvers extends CRUDTip {
       department
     })
   }
+
+  @Query(() => Tip)
+  async randomTip (): Promise<Tip> {
+    // get the current document count
+    const tipCount = await tipModel.estimatedDocumentCount()
+
+    // make a random skip
+    const random = Math.floor(Math.random() * (tipCount))
+
+    // get the random model
+    const randomTip = await tipModel.findOne().skip(random)
+
+    return randomTip!
+  }
 }
